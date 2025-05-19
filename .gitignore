@@ -5,6 +5,8 @@ __pycache__/
 
 # C extensions
 *.so
+archives
+
 
 # Distribution / packaging
 .Python
@@ -169,3 +171,4 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+archives/gf/gf.py

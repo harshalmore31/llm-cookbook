@@ -1,0 +1,6 @@
+[project]
+# Basic project configuration
+name = "My Chainlit App"
+
+[features]
+# Enable features if needed

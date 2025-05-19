@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Chat Interface</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .chat-container {
+      width: 100%;
+      max-width: 400px;
+      background: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      height: 80vh;
+      overflow: hidden;
+    }
+
+    .chat-header {
+      background: #4CAF50;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    .chat-body {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .message {
+      max-width: 80%;
+      padding: 10px;
+      border-radius: 10px;
+      word-wrap: break-word;
+    }
+
+    .message.user {
+      background: #DCF8C6;
+      align-self: flex-end;
+    }
+
+    .message.bot {
+      background: #e9e9e9;
+      align-self: flex-start;
+    }
+
+    .chat-footer {
+      display: flex;
+      padding: 10px;
+      gap: 10px;
+      background: #f1f1f1;
+    }
+
+    .chat-footer input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      outline: none;
+    }
+
+    .chat-footer button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 15px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .chat-footer button:hover {
+      background: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">AI Chat</div>
+    <div class="chat-body" id="chatBody"></div>
+    <div class="chat-footer">
+      <input type="text" id="userInput" placeholder="Type a message...">
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    const chatBody = document.getElementById('chatBody');
+    const userInput = document.getElementById('userInput');
+
+    function addMessage(content, sender) {
+      const message = document.createElement('div');
+      message.className = `message ${sender}`;
+      message.textContent = content;
+      chatBody.appendChild(message);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    function sendMessage() {
+      const input = userInput.value.trim();
+      if (!input) return;
+
+      addMessage(input, 'user');
+      userInput.value = '';
+
+      setTimeout(() => {
+        generateResponse(input);
+      }, 500);
+    }
+
+    function generateResponse(input) {
+      // Example bot response logic
+      const responses = {
+        hello: "Hi there! How can I assist you today?",
+        bye: "Goodbye! Have a great day!",
+        default: "I'm here to help!"
+      };
+
+      const response = responses[input.toLowerCase()] || responses.default;
+      addMessage(response, 'bot');
+    }
+  </script>
+</body>
+</html>
