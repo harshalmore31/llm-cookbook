@@ -16,8 +16,8 @@ embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
 
 # Initialize Qdrant client (using in-memory storage for this example)
 client = QdrantClient(
-    url="https://a0ad82d4-ef3f-41fb-99d3-d09eab5f6af6.us-east-1-0.aws.cloud.qdrant.io",
-    api_key="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3MiOiJtIn0.GB13wgRnNY6Ns_549IbpyegGRc0w426ThL-zCE1EPX8",
+    url="xxx",
+    api_key="xx",
 )
 
 
